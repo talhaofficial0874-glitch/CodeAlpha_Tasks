@@ -1,0 +1,12 @@
+# --- HOW TO RUN THE PROJECT ---
+# 1. Run the Backend (Flask API)
+#    Command: python app.py
+#
+# 2. Run the Frontend (React Vite)
+#    Open a second terminal, navigate to the "client" folder:
+#    Command: cd client
+#    Command: npm install
+#    Command: npm run dev
+# ------------------------------
+
+Flask==3.0.3
