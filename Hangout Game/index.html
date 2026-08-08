@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Hangman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="particles-bg"></div>
+    <div class="game-container">
+        
+        <!-- Dashboard Screen -->
+        <div id="dashboard-screen" class="screen">
+            <div class="dashboard-layout">
+                <div class="dashboard-left">
+                    <header class="dashboard-header">
+                        <h1>HANGMAN</h1>
+                        <p class="subtitle">The Ultimate Word Challenge</p>
+                    </header>
+                    
+                    <div class="how-to-play glow-box">
+                        <h3>📖 How to Play</h3>
+                        <ul>
+                            <li>Guess the hidden word one letter at a time.</li>
+                            <li>If a letter appears multiple times, guess it again!</li>
+                            <li>You have <strong>3 hints</strong> per word.</li>
+                            <li>6 incorrect guesses = Game Over.</li>
+                        </ul>
+                    </div>
+
+                    <button id="start-game-btn" class="primary-btn pulse-btn">Start Game 🚀</button>
+                </div>
+                
+                <div class="dashboard-right">
+                    <h3 class="stats-title">Your Statistics</h3>
+                    <div class="dashboard-stats-grid">
+                        <div class="stat-card glow-box">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-info">
+                                <h4>High Score</h4>
+                                <p id="high-score-display">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card glow-box">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-info">
+                                <h4>Last Score</h4>
+                                <p id="last-score-display">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card glow-box">
+                            <div class="stat-icon">🧠</div>
+                            <div class="stat-info">
+                                <h4>Words Guessed</h4>
+                                <p id="words-guessed-display">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card glow-box">
+                            <div class="stat-icon">🎮</div>
+                            <div class="stat-info">
+                                <h4>Games Played</h4>
+                                <p id="games-played-display">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <header>
+                <div class="top-bar">
+                    <button id="quit-btn" class="secondary-btn">Quit</button>
+                    <div class="score-display glow-box">Score: <span id="current-score">0</span></div>
+                </div>
+                <h2>Guess the word</h2>
+            </header>
+
+            <div class="game-board">
+                <div class="hangman-illustration">
+                    <svg viewBox="0 0 200 250" class="figure-container">
+                        <!-- Gallows (Always visible) -->
+                        <g class="gallows">
+                            <line x1="10" y1="240" x2="90" y2="240" />
+                            <line x1="50" y1="240" x2="50" y2="20" />
+                            <line x1="50" y1="20" x2="130" y2="20" />
+                            <line x1="130" y1="20" x2="130" y2="50" />
+                        </g>
+                        
+                        <!-- Hangman Parts -->
+                        <circle cx="130" cy="70" r="20" class="figure-part head" />
+                        <line x1="130" y1="90" x2="130" y2="150" class="figure-part body" />
+                        <line x1="130" y1="100" x2="100" y2="130" class="figure-part arm-l" />
+                        <line x1="130" y1="100" x2="160" y2="130" class="figure-part arm-r" />
+                        <line x1="130" y1="150" x2="100" y2="190" class="figure-part leg-l" />
+                        <line x1="130" y1="150" x2="160" y2="190" class="figure-part leg-r" />
+                    </svg>
+                </div>
+
+                <div class="game-status">
+                    <!-- Text Clue Display -->
+                    <div id="hint-display" class="hint-box">
+                        <span class="hint-icon">💡</span>
+                        <span id="hint-text">Clue goes here</span>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="action-bar">
+                        <button id="use-hint-btn" class="hint-btn">
+                            Reveal Letter (<span id="hints-left">3</span> left)
+                        </button>
+                    </div>
+
+                    <div id="word-display" class="word-display"></div>
+                    
+                    <div class="stats">
+                        <p>Incorrect Guesses: <span id="incorrect-count">0</span> / 6</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="keyboard" class="keyboard"></div>
+        </div>
+
+        <!-- Modal Overlay -->
+        <div id="message-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="modal-title">You Won!</h2>
+                <p id="modal-desc">The word was <span id="final-word"></span></p>
+                
+                <div class="modal-actions">
+                    <button id="next-word-btn" class="primary-btn hidden pulse-btn">Next Word</button>
+                    <button id="return-dashboard-btn" class="secondary-btn">Return to Dashboard</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
