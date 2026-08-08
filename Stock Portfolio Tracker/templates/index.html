@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Portfolio Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Portfolio Tracker</h1>
+            <p>Calculate your total investment in seconds</p>
+        </header>
+
+        <div class="card main-card">
+            <form method="POST" action="/" class="tracker-form">
+                <div class="form-group">
+                    <label for="stock_name">Select Stock</label>
+                    <select name="stock_name" id="stock_name" required>
+                        <option value="" disabled selected>Choose a stock...</option>
+                        {% for symbol, price in stocks.items() %}
+                            <option value="{{ symbol }}">{{ symbol }} (${{ price }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" min="0.01" step="0.01" placeholder="e.g. 10.5" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Calculate Investment</button>
+            </form>
+
+            {% if error %}
+            <div class="alert alert-error">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+
+            {% if result %}
+            <div class="result-section">
+                <h2>Investment Summary</h2>
+                <div class="result-grid">
+                    <div class="result-item">
+                        <span class="label">Stock</span>
+                        <span class="value">{{ result.name }}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Price per share</span>
+                        <span class="value">${{ "{:,.2f}".format(result.price) }}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Quantity</span>
+                        <span class="value">{{ result.quantity }}</span>
+                    </div>
+                    <div class="result-item total">
+                        <span class="label">Total Value</span>
+                        <span class="value highlight">${{ "{:,.2f}".format(result.total) }}</span>
+                    </div>
+                </div>
+                <div class="save-notice">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    <span>Result saved to portfolio.csv</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
