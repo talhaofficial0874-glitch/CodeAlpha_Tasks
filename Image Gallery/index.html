@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Gallery | Modern Image Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="gallery-header">
+        <h1>Pro<span>Gallery</span></h1>
+        <p>A Professional & Dynamic Image Showcase</p>
+    </header>
+
+    <nav class="filter-nav">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
+        <button class="filter-btn" data-filter="architecture">Architecture</button>
+        <button class="filter-btn" data-filter="technology">Technology</button>
+    </nav>
+
+    <main class="gallery-container">
+        <!-- Gallery Items -->
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80" alt="Nature 1">
+            <div class="item-overlay">
+                <h3>Mountain Peak</h3>
+                <p>Nature</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="architecture">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Architecture 1">
+            <div class="item-overlay">
+                <h3>Modern Skyscraper</h3>
+                <p>Architecture</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="technology">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech 1">
+            <div class="item-overlay">
+                <h3>Circuit Board</h3>
+                <p>Technology</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Nature 2">
+            <div class="item-overlay">
+                <h3>Deep Forest</h3>
+                <p>Nature</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="architecture">
+            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80" alt="Architecture 2">
+            <div class="item-overlay">
+                <h3>Classic Building</h3>
+                <p>Architecture</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="technology">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Tech 2">
+            <div class="item-overlay">
+                <h3>Cyber Setup</h3>
+                <p>Technology</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-btn">&times;</span>
+        <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Lightbox Image">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
