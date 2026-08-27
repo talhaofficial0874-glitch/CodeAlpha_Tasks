@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Remix Icons for crisp, scalable icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Background animated shapes -->
+    <div class="blob shape-1"></div>
+    <div class="blob shape-2"></div>
+    <div class="blob shape-3"></div>
+
+    <div class="player-wrapper">
+        <!-- Main Player UI -->
+        <div class="player">
+            <!-- Header Section -->
+            <div class="header">
+                <button class="icon-btn" id="playlist-btn" aria-label="Open Playlist">
+                    <i class="ri-play-list-line"></i>
+                </button>
+                <p class="now-playing-text">NOW PLAYING</p>
+                <button class="icon-btn" id="add-song-btn" aria-label="Add Song" title="Add Local Song">
+                    <i class="ri-folder-add-line"></i>
+                </button>
+                <input type="file" id="file-upload" accept="audio/*" multiple style="display: none;">
+            </div>
+
+            <!-- Album Art Section -->
+            <div class="album-container">
+                <div class="album-art" id="album-art">
+                    <img id="cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&q=80" alt="Album Cover">
+                    <!-- The inner hole of the record -->
+                    <div class="record-hole"></div>
+                </div>
+            </div>
+
+            <!-- Song Information -->
+            <div class="song-info">
+                <h2 id="title" class="song-title">Loading...</h2>
+                <h3 id="artist" class="song-artist">Artist</h3>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="time-info">
+                    <span id="current-time">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-head"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Controls -->
+            <div class="controls">
+                <button class="icon-btn action-btn" id="prev" aria-label="Previous">
+                    <i class="ri-skip-back-fill"></i>
+                </button>
+                <button class="icon-btn play-btn" id="play" aria-label="Play/Pause">
+                    <i class="ri-play-fill" id="play-icon"></i>
+                </button>
+                <button class="icon-btn action-btn" id="next" aria-label="Next">
+                    <i class="ri-skip-forward-fill"></i>
+                </button>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="volume-control">
+                <button class="icon-btn volume-btn" id="vol-down" aria-label="Volume Down">
+                    <i class="ri-volume-down-line"></i>
+                </button>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.8">
+                <button class="icon-btn volume-btn" id="vol-up" aria-label="Volume Up">
+                    <i class="ri-volume-up-line"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Playlist Panel -->
+        <div class="playlist-panel" id="playlist-panel">
+            <div class="playlist-header">
+                <h3>My Playlist</h3>
+                <button class="icon-btn" id="close-playlist" aria-label="Close Playlist">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <ul class="playlist-list" id="playlist-list">
+                <!-- Playlist items injected via JS -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="audio"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
